@@ -66,6 +66,7 @@ class Home extends StatelessWidget {
             children: [
               Expanded(
                 child: TextField(
+                  maxLines: null,
                   controller: messageController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
@@ -74,6 +75,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     hintText: 'Enter your message',
+                    
                   ),
                 ),
               ),

@@ -89,14 +89,14 @@ class _ForgetPageState extends State<ForgetPage> {
                             }
                           },
                     style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(235, 37, 142, 212),
-                      onPrimary: Color.fromARGB(255, 255, 255, 253),
+                      foregroundColor: Color.fromARGB(255, 255, 255, 253), 
+                      backgroundColor: Color.fromARGB(235, 37, 142, 212),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
                       child: Text(
                         'Reset Password',
                         style: TextStyle(

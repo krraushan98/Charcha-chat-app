@@ -7,16 +7,16 @@ class NotificationApi {
       'ZmQ5YWE0NjEtZmY3ZS00N2FjLWFlYTAtNjE4NTUzNzkyNDNk';
   static const String oneSignalAppId = '9208bca3-6fb4-4fae-a151-0be6f29ae630';
   initNotificatoins() {
-    OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-    OneSignal.shared.setAppId("9208bca3-6fb4-4fae-a151-0be6f29ae630");
-    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-      print("Accepted permission: $accepted");
-      print("notification received");
+    OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+    OneSignal.Debug.setAlertLevel(OSLogLevel.none);
+    OneSignal.initialize("9208bca3-6fb4-4fae-a151-0be6f29ae630");
+   OneSignal.Notifications.addPermissionObserver((state) {
+      print("Has permission " + state.toString());
     });
-    OneSignal.shared.setNotificationWillShowInForegroundHandler(
-        (OSNotificationReceivedEvent event) {
+    OneSignal.Notifications.addForegroundWillDisplayListener((event)
+        {
       // Display Notification, send null to not display, send notification to display
-      event.complete(null);
+      event.preventDefault();
     });
   }
 

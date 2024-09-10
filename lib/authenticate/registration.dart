@@ -163,14 +163,13 @@ class _RegistrationState extends State<Registration> {
                               }
                             },
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(235, 37, 142, 212),
-                        onPrimary: Color.fromARGB(255, 251, 251, 251),
+                        foregroundColor: Color.fromARGB(255, 251, 251, 251), backgroundColor: Color.fromARGB(235, 37, 142, 212),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
                       child: const Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(15.0),
                         child: Text(
                           'Sign up',
                           style: TextStyle(
