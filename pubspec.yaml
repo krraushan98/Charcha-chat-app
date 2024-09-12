@@ -45,6 +45,8 @@ dependencies:
   firebase_analytics: ^10.7.4
   onesignal_flutter: ^5.0.4
   http: ^1.1.2
+  notification_permissions: ^0.6.1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

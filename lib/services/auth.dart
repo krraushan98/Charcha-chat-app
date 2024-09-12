@@ -7,13 +7,11 @@ import 'package:flutter_firebase/services/database.dart';
 class AuthServices{
 
  AuthServices() {
-    // Ensure Firebase is initialized before using any Firebase services
     Firebase.initializeApp();
   }
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Userinfo _userFromFirebaseUser(User userid){
-    // ignore: unnecessary_null_comparison
     return userid != null ? Userinfo(uid: userid.uid) : Userinfo(uid: '');
   }
 

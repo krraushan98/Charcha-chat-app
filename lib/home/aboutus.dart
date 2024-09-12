@@ -39,13 +39,13 @@ class AboutUsPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
-            Center(
-              child: Text("Bas Itna Aur Kya Chahiye 🤨",
-                  style: TextStyle(fontSize: 30.0,
-                  fontWeight: FontWeight.bold
-                  ),
-                  ),
-            )
+            // Center(
+            //   child: Text("Bas Itna Aur Kya Chahiye 🤨",
+            //       style: TextStyle(fontSize: 30.0,
+            //       fontWeight: FontWeight.bold
+            //       ),
+            //       ),
+            // )
             // Add more information as needed
           ],
         ),

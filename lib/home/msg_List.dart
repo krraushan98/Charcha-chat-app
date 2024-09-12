@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/home/update.dart';
+import 'package:flutter_firebase/model/user.dart';
 import 'package:provider/provider.dart';
 import '../services/database.dart';
 
@@ -11,6 +14,7 @@ class msgList extends StatefulWidget {
 
 class _msgListState extends State<msgList> {
   late ScrollController _scrollController;
+  
 
   @override
   void initState() {
@@ -21,6 +25,7 @@ class _msgListState extends State<msgList> {
   @override
   Widget build(BuildContext context) {
     final messages = Provider.of<List<Message>>(context);
+    final user = Provider.of<Userinfo?>(context)!;
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.8,
@@ -43,20 +48,54 @@ class _msgListState extends State<msgList> {
                 padding: const EdgeInsets.all(0.0),
                 child: Container(
                   padding: EdgeInsets.all(0.0),
-                  child: ListTile(
-                    title: Text(
-                      messages[reversedIndex].senderName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(
+                          messages[reversedIndex].senderName,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                          messages[reversedIndex].content,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
-                    ),
-                    subtitle: Text(
-                      messages[reversedIndex].content,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                      ),
-                    ),
+                      if(user.uid == messages[reversedIndex].senderUid)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                             showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return UpdateDialog(
+                                    messageId: messages[reversedIndex].messageId,
+                                    content: messages[reversedIndex].content,
+                                  );
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.edit),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              DatabaseService(uid: '').deleteMessage(
+                                  messages[reversedIndex].messageId);
+                            },
+                            icon: const Icon(Icons.delete),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),

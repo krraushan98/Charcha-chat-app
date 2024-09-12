@@ -1,4 +1,4 @@
 class Userinfo {
-  final String? uid; // Make uid nullable
+  final String? uid; 
   Userinfo({required this.uid});
 }
